@@ -1,4 +1,4 @@
-# vuetest
+# sd-advanced-connector
 
 ```
 Skidata Advanced Connector Test Client Application

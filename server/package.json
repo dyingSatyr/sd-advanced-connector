@@ -10,13 +10,13 @@
   "author": "Boris Grabovac",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.5.3",
+    "amqplib": "^0.5.5",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "xml2js": "^0.4.19"
+    "express": "^4.17.1",
+    "xml2js": "^0.4.22"
   },
   "devDependencies": {
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.4"
   }
 }
