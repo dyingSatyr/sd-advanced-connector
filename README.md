@@ -1,8 +1,6 @@
 # sd-advanced-connector
 
-```
-Skidata Advanced Connector Test Client Application
-```
+### Skidata Advanced Connector Test Client Application
 
 ## Setup
 
@@ -22,6 +20,4 @@ in server dir
 
 ## Author
 
-```
 Boris Grabovac
-```
