@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviceInitiateLicensePlatePaymentTransaction xmlns="http://www.skidata.com/parking/commands/v1/command">
+  <deviceId>83</deviceId>
+  <justification>justification1</justification>
+  <identification>
+    <PlateNo xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">LPLATEX</PlateNo>
+    <Country xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">To1</Country>
+    <Province xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">Province1</Province>
+    <Type xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">1</Type>
+    <extension xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+    </extension>
+  </identification>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</deviceInitiateLicensePlatePaymentTransaction>

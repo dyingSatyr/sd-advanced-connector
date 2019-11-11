@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviceCreateLicensePlateParkingTransaction xmlns="http://www.skidata.com/parking/commands/v1/command">
+  <deviceId>10</deviceId>
+  <justification>justification1</justification>
+  <identification>
+    <PlateNo xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">IZMIS4</PlateNo>
+    <Country xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">To1</Country>
+    <Province xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">Province1</Province>
+    <Type xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">1</Type>
+    <extension xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+    </extension>
+  </identification>
+  <carParkId>0</carParkId>
+  <entryDateTime>2018-04-18T05:05:05+01:00</entryDateTime>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</deviceCreateLicensePlateParkingTransaction>

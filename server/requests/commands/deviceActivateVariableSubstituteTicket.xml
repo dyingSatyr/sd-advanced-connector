@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviceActivateVariableSubstituteTicket xmlns="http://www.skidata.com/parking/commands/v1/command">
+  <deviceId>83</deviceId>
+  <justification>deviceActivateVariableSubstituteTicket</justification>
+  <dateTime>2019-04-17T01:01:01+01:00</dateTime>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</deviceActivateVariableSubstituteTicket>

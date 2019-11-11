@@ -1,29 +1,20 @@
 # vuetest
 
-## Project setup
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+Skidata Advanced Connector Test Client Application
 ```
 
-### Compiles and minifies for production
+## Setup
+
 ```
-npm run build
+App is running on nodejs backend with vuejs frontend.
+
+npm run serve in root dir
+npm run dev in server dir
 ```
 
-### Run your tests
-```
-npm run test
-```
+## Author
 
-### Lints and fixes files
 ```
-npm run lint
+Boris Grabovac (boris.grabovac@de.at; grabovacb86@gmail.com)
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviceDeactivateExtendedExitGracePeriod xmlns="http://www.skidata.com/parking/commands/v1/command">
+  <deviceId>83</deviceId>
+  <justification>Deactivate Ex.Ex.Gr.Pr.</justification>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</deviceDeactivateExtendedExitGracePeriod>

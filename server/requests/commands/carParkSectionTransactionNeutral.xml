@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carParkSectionTransactionNeutral xmlns="http://www.skidata.com/parking/commands/v1/command">
+  <carParkId>1</carParkId>
+  <justification>justification1</justification>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</carParkSectionTransactionNeutral>

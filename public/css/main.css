@@ -1,0 +1,121 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #f7f8f9;
+}
+
+h1,
+h2,
+h3,
+p,
+input,
+label,
+button {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: #333;
+  padding: 20px;
+}
+
+header img {
+  margin-top: 5px;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  padding: 20px;
+  grid-gap: 20px;
+  grid-template:
+    [row1-start] "environment protocols" [row1-end]
+    [row2-start] "notification announcement" [row2-end]
+    / auto auto;
+}
+
+.comp-container {
+  background: white;
+  border: 1px solid #d1d1d1;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.comp-protocols {
+  grid-area: protocols;
+}
+
+.comp-environment {
+  grid-area: environment;
+}
+
+.comp-notification {
+  grid-area: notification;
+}
+
+.comp-announcement {
+  grid-area: announcement;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+button {
+  font-weight: bold;
+  background-color: #ffdb4f;
+  color: #333;
+  border: none;
+  padding: 7px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+  font-size: 14px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+  color: #ffffff;
+}
+
+label {
+  color: #444;
+  font-size: 14px;
+  font-weight: bold;
+}
+select,
+input,
+textarea {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  width: 100%;
+  padding: 5px 5px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  display: block;
+  margin: 5px 0 15px;
+  max-width: 300px;
+}
+
+.comp-environment input {
+  width: 300px;
+}
+
+.comp-notification textarea,
+.comp-announcement textarea {
+  width: 100%;
+  max-width: 100%;
+  font-size: 14px;
+  margin-bottom: 0;
+}
