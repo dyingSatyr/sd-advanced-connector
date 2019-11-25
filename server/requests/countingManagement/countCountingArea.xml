@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<countCountingArea xmlns="http://www.skidata.com/parking/countingmanagement/v1/command">
+  <carParkId>1</carParkId>
+  <countingAreaId>1</countingAreaId>
+  <value>1</value>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</countCountingArea>

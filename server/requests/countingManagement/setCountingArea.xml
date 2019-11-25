@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setCountingArea xmlns="http://www.skidata.com/parking/countingmanagement/v1/command">
+  <carParkId>1</carParkId>
+  <countingAreaId>1</countingAreaId>
+  <level>1</level>
+  <trafficSignalMode>1</trafficSignalMode>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</setCountingArea>
