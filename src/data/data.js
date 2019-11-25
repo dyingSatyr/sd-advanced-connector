@@ -23,6 +23,10 @@ export default {
     {
       id: 6,
       name: "countingManagement"
+    },
+    {
+      id: 7,
+      name: "cashLevels"
     }
   ],
   commands: [
@@ -492,6 +496,13 @@ export default {
           "trafficSignalMode",
           "externalCounting"
         ]
+      }
+    ],
+    [
+      {
+        id: 1,
+        name: "requestCashLevels",
+        mandatory: ["deviceId"]
       }
     ]
   ]
