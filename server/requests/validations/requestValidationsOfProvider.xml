@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<requestValidationsOfProvider xmlns="http://www.skidata.com/parking/validations/v1/command">
+  <validationProviderId>1</validationProviderId>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</requestValidationsOfProvider>

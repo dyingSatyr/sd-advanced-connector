@@ -1,0 +1,2 @@
+All announcement and notification messages will be logged here. Seperate logs will be created for each facility/client.
+Logs have no file size restrictions so clear the folder occasionally.

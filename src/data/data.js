@@ -27,6 +27,10 @@ export default {
     {
       id: 7,
       name: "cashLevels"
+    },
+    {
+      id: 8,
+      name: "validations"
     }
   ],
   commands: [
@@ -503,6 +507,51 @@ export default {
         id: 1,
         name: "requestCashLevels",
         mandatory: ["deviceId"]
+      }
+    ],
+    [
+      {
+        id: 1,
+        name: "deleteValidation",
+        // TODO: identification is complex type, implement handling of identification [TicketType, CardKey, CardCompany, CreditCardExpiryDate, MediaType]
+        mandatory: ["identification", "validationProviderId", "dateTime"]
+      },
+      {
+        id: 2,
+        name: "insertValidation",
+        // TODO: identification and validation [validation = type, value, valueDateTime]
+        mandatory: [
+          "identification",
+          "validationProviderId",
+          "dateTime",
+          "validation",
+          "expirationDateTime"
+        ]
+      },
+      {
+        id: 3,
+        name: "requestValidationsOfProvider",
+        mandatory: ["validationProviderId"]
+      },
+      {
+        id: 4,
+        name: "requestValidationsOfTicket",
+        // TODO: handle identification
+        mandatory: ["identification"]
+      },
+      {
+        id: 4,
+        name: "updateValidation",
+        // TODO: identification, validation
+        mandatory: [
+          "identification",
+          "validationProviderId",
+          "dateTime",
+          "presenceRequired",
+          "externalValidationId",
+          "validation",
+          "expirationDateTime"
+        ]
       }
     ]
   ]

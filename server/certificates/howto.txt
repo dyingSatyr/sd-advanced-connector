@@ -1,0 +1,14 @@
+Create a batch script with the following code:
+
+
+openssl genrsa 2048 >my.key
+openssl req -new -x509 -days 365 -key my.key -out APT<FacilityNumber>.<ClientShortname>.crt -subj "/CN=APT<FacilityNumber>.<ClientShortname>" -sha256 -config openssl.cfg -extensions v3_req
+openssl pkcs12 -export -out APT<FacilityNumber>.<ClientShortname>.pfx -inkey my.key -in APT<FacilityNumber>.<ClientShortname>.crt -name "APT<FacilityNumber>.<ClientShortname>" -passout pass:
+pause
+
+
+1. Replace <FacilityNumber> with 7-digit facility number and <ClientShortname> with client abbreviation from Main Menu/Interfaces/AC in all occurrences.
+2. Run the script. 
+3. Copy the created .crt and .pfx files to this folder.
+4. Upload the created .crt to DAU exchange folder
+5. On your DAU, under Main Menu/Interfaces/AC/ select your client and go to edit/Read Certificate and load it from exchange.

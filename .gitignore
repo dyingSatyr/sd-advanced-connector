@@ -1,8 +1,6 @@
 .DS_Store
 node_modules
 /dist
-server/certificates
-server/logs
 
 # local env files
 .env.local
@@ -23,3 +21,11 @@ yarn-error.log*
 *.sw?
 
 .gitconfig
+
+# Hide certificates
+*.crt
+*.pfx
+
+# Hide logs
+announcement.*.log
+notification.*.log
