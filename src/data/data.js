@@ -73,6 +73,18 @@ export default {
       {
         id: 7,
         name: "requestSections"
+      },
+      {
+        id: 8,
+        name: "requestArticles"
+      },
+      {
+        id: 9,
+        name: "requestRateCategories"
+      },
+      {
+        id: 10,
+        name: "requestValidationProviders"
       }
     ],
     [

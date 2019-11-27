@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<requestRateCategories xmlns="http://www.skidata.com/parking/configuration/v1/command">
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</requestRateCategories>
