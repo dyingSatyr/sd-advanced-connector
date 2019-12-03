@@ -6,17 +6,11 @@
 
 App is running on nodejs backend with vuejs frontend.
 
-```
-npm run serve
-```
-
-in root dir
+To run both apps execute the following command in application root directory:
 
 ```
-npm run dev
+npm run app
 ```
-
-in server dir
 
 ## Supported Protocols
 

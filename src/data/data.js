@@ -22,14 +22,10 @@ export default {
     },
     {
       id: 6,
-      name: "countingManagement"
-    },
-    {
-      id: 7,
       name: "cashLevels"
     },
     {
-      id: 8,
+      id: 7,
       name: "validations"
     }
   ],
@@ -91,6 +87,54 @@ export default {
       {
         id: 1,
         name: "triggerCounters"
+      },
+      {
+        id: 2,
+        name: "countCountingArea",
+        mandatory: ["carParkId", "countingAreaId", "value"]
+      },
+      {
+        id: 3,
+        name: "countCountingCategory",
+        mandatory: ["carParkId", "countingCategoryId", "value"]
+      },
+      {
+        id: 4,
+        name: "manageCountingArea",
+        mandatory: [
+          "carParkId",
+          "countingAreaId",
+          "capacity",
+          "occupancyLimit",
+          "freeLimit"
+        ]
+      },
+      {
+        id: 5,
+        name: "manageCountingCategory",
+        mandatory: [
+          "carParkId",
+          "countingCategoryId",
+          "capacity",
+          "occupancyLimit",
+          "freeLimit"
+        ]
+      },
+      {
+        id: 6,
+        name: "setCountingArea",
+        mandatory: ["carParkId", "countingAreaId", "level", "trafficSignalMode"]
+      },
+      {
+        id: 7,
+        name: "setCountingCategory",
+        mandatory: [
+          "carParkId",
+          "countingCategoryId",
+          "level",
+          "trafficSignalMode",
+          "externalCounting"
+        ]
       }
     ],
     [
@@ -462,56 +506,6 @@ export default {
         id: 64,
         name: "requestSupportedDeviceCommands",
         mandatory: ["deviceId"]
-      }
-    ],
-    [
-      {
-        id: 1,
-        name: "countCountingArea",
-        mandatory: ["carParkId", "countingAreaId", "value"]
-      },
-      {
-        id: 2,
-        name: "countCountingCategory",
-        mandatory: ["carParkId", "countingCategoryId", "value"]
-      },
-      {
-        id: 3,
-        name: "manageCountingArea",
-        mandatory: [
-          "carParkId",
-          "countingAreaId",
-          "capacity",
-          "occupancyLimit",
-          "freeLimit"
-        ]
-      },
-      {
-        id: 4,
-        name: "manageCountingCategory",
-        mandatory: [
-          "carParkId",
-          "countingCategoryId",
-          "capacity",
-          "occupancyLimit",
-          "freeLimit"
-        ]
-      },
-      {
-        id: 5,
-        name: "setCountingArea",
-        mandatory: ["carParkId", "countingAreaId", "level", "trafficSignalMode"]
-      },
-      {
-        id: 6,
-        name: "setCountingCategory",
-        mandatory: [
-          "carParkId",
-          "countingCategoryId",
-          "level",
-          "trafficSignalMode",
-          "externalCounting"
-        ]
       }
     ],
     [

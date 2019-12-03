@@ -8,6 +8,7 @@ const fs = require("fs");
 
 const amqp = require("amqplib");
 const parser = require("xml2js");
+const baseURL = "./server/";
 
 let lastNotification = "";
 let lastAnnouncement = "";
@@ -65,7 +66,8 @@ app.post("/", function(req, res) {
   const request = req.body.commandName;
 
   //Determine the path to correct xml file
-  const pathToRequest = "requests/" + protocol + "/" + request + ".xml";
+  const pathToRequest =
+    baseURL + "requests/" + protocol + "/" + request + ".xml";
   var msg = "";
 
   //Get text from XML
@@ -157,7 +159,11 @@ function listenRMQQueue(rmqip, queue, client, opts) {
 
               //Save messages to log folder
               let now = new Date();
-              if (!fs.existsSync("logs/" + queue + "." + client + ".log")) {
+              if (
+                !fs.existsSync(
+                  baseURL + "logs/" + queue + "." + client + ".log"
+                )
+              ) {
                 fs.writeFile(
                   "logs/" + queue + "." + client + ".log",
                   now + " \r\n" + msg.content.toString(),
@@ -169,7 +175,7 @@ function listenRMQQueue(rmqip, queue, client, opts) {
                 );
               } else {
                 fs.appendFile(
-                  "logs/" + queue + "." + client + ".log",
+                  baseURL + "logs/" + queue + "." + client + ".log",
                   "\r\n ###Next### " + now + " \r\n" + msg.content.toString(),
                   err => {
                     if (err) {
@@ -201,9 +207,9 @@ function listenRMQQueue(rmqip, queue, client, opts) {
 // **********************
 function getCurrentConnOpts(client) {
   const opts = {
-    pfx: fs.readFileSync("certificates/" + client + ".pfx"), // using pfx
+    pfx: fs.readFileSync(baseURL + "certificates/" + client + ".pfx"), // using pfx
     passphrase: "", // passphrase for key
-    ca: [fs.readFileSync("certificates/" + client + ".crt")], // array of trusted CA certs
+    ca: [fs.readFileSync(baseURL + "certificates/" + client + ".crt")], // array of trusted CA certs
     credentials: amqp.credentials.external() // set auth mode
   };
   return opts;
