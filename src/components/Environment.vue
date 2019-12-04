@@ -4,23 +4,40 @@
     <!-- RMQIP Input -->
     <div class="form-group">
       <label :for="rmqip">RabbitMQ IP Address:</label>
-      <input v-model="rmqip" type="text" placeholder="RabbitMQ IP Address" name="rmqip" />
+      <input
+        v-model="rmqip"
+        type="text"
+        placeholder="RabbitMQ IP Address"
+        name="rmqip"
+      />
     </div>
 
     <!-- Facility Number Input -->
     <div class="form-group">
       <label :for="fno">Facility Number:</label>
-      <input v-model="fno" type="text" placeholder="7 digit Facility Number" name="fno" />
+      <input
+        v-model="fno"
+        type="text"
+        placeholder="7 digit Facility Number"
+        name="fno"
+      />
     </div>
 
     <!-- AC Client Shortname Input -->
     <div class="form-group">
       <label :for="acc">Advanced Connector Client:</label>
-      <input v-model="acc" type="text" placeholder="AC Client Shortname" name="acc" />
+      <input
+        v-model="acc"
+        type="text"
+        placeholder="AC Client Shortname"
+        name="acc"
+      />
     </div>
 
     <div class="form-group">
-      <button @click="sendEnvironmentDetails(rmqip,fno,acc)">Set Environment</button>
+      <button @click="sendEnvironmentDetails(rmqip, fno, acc)">
+        Set Environment
+      </button>
     </div>
   </div>
 </template>
@@ -31,9 +48,9 @@ export default {
   props: [], //End Props
   data() {
     return {
-      acc: "",
-      fno: "",
-      rmqip: ""
+      acc: "AC001",
+      fno: "0001347",
+      rmqip: "10.29.10.142"
     };
   }, //End Data
   methods: {
@@ -49,7 +66,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
-
-
+<style></style>

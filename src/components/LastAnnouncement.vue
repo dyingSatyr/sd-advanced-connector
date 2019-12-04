@@ -1,23 +1,25 @@
 <template>
   <div class="comp-container comp-announcement">
     <h1>Announcement Stream</h1>
-    <label for="announcement">Last recieved message:</label>
-    <textarea rows="20" name="announcement" :value="lastAnnouncement"></textarea>
+    <vue-code-highlight>
+      {{ lastAnnouncement }}
+    </vue-code-highlight>
   </div>
 </template>
 
 <script>
+import { component as VueCodeHighlight } from "vue-code-highlight";
 export default {
   name: "LastAnnouncement",
   props: ["lastAnnouncement"], //End Props
   data() {
     return {};
   }, //End Data
-  methods: {}
+  methods: {},
+  components: {
+    VueCodeHighlight
+  }
 };
 </script>
 
-<style>
-</style>
-
-
+<style></style>

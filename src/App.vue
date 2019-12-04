@@ -111,9 +111,9 @@ export default {
           console.log(error);
         });
     }
-  }
+  },
+  created() {}
 };
 </script>
 
-<style>
-</style>
+<style></style>
