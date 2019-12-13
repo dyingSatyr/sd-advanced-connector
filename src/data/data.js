@@ -1,3 +1,13 @@
+let identification = [
+  "TicketType",
+  "CardKey",
+  "CardCompany",
+  "CreditCardExpiryDate",
+  "MediaType"
+];
+
+let validation = ["type", "value", "valueDateTime"];
+
 export default {
   protocols: [
     {
@@ -519,18 +529,16 @@ export default {
       {
         id: 1,
         name: "deleteValidation",
-        // TODO: identification is complex type, implement handling of identification [TicketType, CardKey, CardCompany, CreditCardExpiryDate, MediaType]
-        mandatory: ["identification", "validationProviderId", "dateTime"]
+        mandatory: [identification, "validationProviderId", "dateTime"]
       },
       {
         id: 2,
         name: "insertValidation",
-        // TODO: identification and validation [validation = type, value, valueDateTime]
         mandatory: [
-          "identification",
+          identification,
           "validationProviderId",
           "dateTime",
-          "validation",
+          validation,
           "expirationDateTime"
         ]
       },
@@ -542,20 +550,18 @@ export default {
       {
         id: 4,
         name: "requestValidationsOfTicket",
-        // TODO: handle identification
-        mandatory: ["identification"]
+        mandatory: [identification]
       },
       {
         id: 4,
         name: "updateValidation",
-        // TODO: identification, validation
         mandatory: [
-          "identification",
+          identification,
           "validationProviderId",
           "dateTime",
           "presenceRequired",
           "externalValidationId",
-          "validation",
+          validation,
           "expirationDateTime"
         ]
       }

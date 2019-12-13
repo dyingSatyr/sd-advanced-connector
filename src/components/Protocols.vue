@@ -30,14 +30,28 @@
     <div id="mandatory-fields" v-if="mandatoryExists">
       <h1>Mandatory parameters:</h1>
       <div v-for="mandatoryField in mandatoryExists" v-bind:key="mandatoryField.id">
-        <label :for="mandatoryField">{{mandatoryField}}:</label>
-        <input
-          type="text"
-          ref="mandatoryInput"
-          :placeholder="mandatoryField"
-          :name="mandatoryField"
-          @blur="addParamToRequestData(mandatoryField, $event.target.value)"
-        />
+        <ul v-if="Array.isArray(mandatoryField)">
+          <li v-for="field in mandatoryField" :key="field.id">
+            <label :for="field">{{field}}</label>
+            <input
+              type="text"
+              ref="mandatoryInput"
+              :placeholder="field"
+              :name="field"
+              @blur="addParamToRequestData(mandatoryField, $event.target.value)"
+            />
+          </li>
+        </ul>
+        <div v-else>
+          <label :for="mandatoryField">{{mandatoryField}}:</label>
+          <input
+            type="text"
+            ref="mandatoryInput"
+            :placeholder="mandatoryField"
+            :name="mandatoryField"
+            @blur="addParamToRequestData(mandatoryField, $event.target.value)"
+          />
+        </div>
       </div>
     </div>
 
@@ -156,6 +170,12 @@ export default {
 
 
 <style scoped>
+ul {
+  border: 1px solid #d1d1d1;
+  padding: 20px;
+  background: #f3f3f3;
+  margin-bottom: 20px;
+}
 </style>
 
 

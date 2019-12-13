@@ -107,7 +107,7 @@ textarea {
   box-sizing: border-box;
   display: block;
   margin: 5px 0 15px;
-  max-width: 300px;
+  /* max-width: 300px; */
 }
 
 .comp-environment input {

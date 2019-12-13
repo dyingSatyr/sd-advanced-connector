@@ -165,7 +165,7 @@ function listenRMQQueue(rmqip, queue, client, opts) {
                 )
               ) {
                 fs.writeFile(
-                  "logs/" + queue + "." + client + ".log",
+                  baseURL + "logs/" + queue + "." + client + ".log",
                   now + " \r\n" + msg.content.toString(),
                   err => {
                     if (err) {

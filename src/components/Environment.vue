@@ -48,17 +48,17 @@ export default {
   props: [], //End Props
   data() {
     return {
-      acc: "",
-      fno: "",
-      rmqip: ""
+      acc: "AC001",
+      fno: "0001347",
+      rmqip: "10.29.10.142"
     };
   }, //End Data
   methods: {
     sendEnvironmentDetails(rmqip, fno, acc) {
       let environment = {
-        rmqip: rmqip,
-        fno: fno,
-        acc: acc
+        rmqip,
+        fno,
+        acc
       };
       this.$emit("send-environment-details", environment);
     }
