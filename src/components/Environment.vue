@@ -48,9 +48,9 @@ export default {
   props: [], //End Props
   data() {
     return {
-      acc: "AC001",
-      fno: "0001347",
-      rmqip: "10.29.10.142"
+      acc: "",
+      fno: "",
+      rmqip: ""
     };
   }, //End Data
   methods: {
