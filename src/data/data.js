@@ -22,20 +22,21 @@ export default {
       id: 3,
       name: "counting"
     },
+    { id: 4, name: "countingmanagement" },
     {
-      id: 4,
+      id: 5,
       name: "events"
     },
     {
-      id: 5,
+      id: 6,
       name: "commands"
     },
     {
-      id: 6,
+      id: 7,
       name: "cashLevels"
     },
     {
-      id: 7,
+      id: 8,
       name: "validations"
     }
   ],
@@ -97,19 +98,21 @@ export default {
       {
         id: 1,
         name: "triggerCounters"
-      },
+      }
+    ],
+    [
       {
-        id: 2,
+        id: 1,
         name: "countCountingArea",
         mandatory: ["carParkId", "countingAreaId", "value"]
       },
       {
-        id: 3,
+        id: 2,
         name: "countCountingCategory",
         mandatory: ["carParkId", "countingCategoryId", "value"]
       },
       {
-        id: 4,
+        id: 3,
         name: "manageCountingArea",
         mandatory: [
           "carParkId",
@@ -120,7 +123,7 @@ export default {
         ]
       },
       {
-        id: 5,
+        id: 4,
         name: "manageCountingCategory",
         mandatory: [
           "carParkId",
@@ -131,12 +134,12 @@ export default {
         ]
       },
       {
-        id: 6,
+        id: 5,
         name: "setCountingArea",
         mandatory: ["carParkId", "countingAreaId", "level", "trafficSignalMode"]
       },
       {
-        id: 7,
+        id: 6,
         name: "setCountingCategory",
         mandatory: [
           "carParkId",
