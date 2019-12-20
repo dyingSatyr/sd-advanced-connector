@@ -33,7 +33,7 @@ export default {
     },
     {
       id: 7,
-      name: "cashLevels"
+      name: "cashlevels"
     },
     {
       id: 8,
