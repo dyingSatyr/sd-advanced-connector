@@ -62,6 +62,9 @@ app.post("/env", function(req, res) {
 app.post("/", function(req, res) {
   //Get data from form
   const requestParams = req.body.params;
+  console.log("rikvestparams =");
+  console.dir(requestParams);
+
   const protocol = req.body.protocolName;
   const request = req.body.commandName;
 
@@ -81,11 +84,20 @@ app.post("/", function(req, res) {
         console.log(err);
       }
       //Result is Object from XML
-      //console.dir(reqObject);
+      console.dir(reqObject);
 
+      // TODO: add complex type
       //Change object properties
       for (const [key, value] of Object.entries(requestParams)) {
-        reqObject[request][key] = value;
+        //if value is object, means we have a complex type
+        if (value instanceof Object && !(value instanceof Array)) {
+          for (const [k, v] of Object.entries(value)) {
+            reqObject[request][key][0][k] = v;
+          }
+        } else {
+          //Just plop in the value in key, no complex type
+          reqObject[request][key] = value;
+        }
       }
 
       //Build XML again
@@ -229,7 +241,7 @@ function getCurrentConnParams(client, protocol) {
 // **********************
 
 function setLastMessageRecieved(q, msg) {
-  console.log(`Message: ${msg} from queue: ${q}`);
+  console.log(`Message recieved: ${msg} from ${q} queue.`);
   if (q == "notification") {
     lastNotification = msg;
   } else if (q == "announcement") {

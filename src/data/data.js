@@ -1,3 +1,5 @@
+// Complex types
+
 let identification = [
   "TicketType",
   "CardKey",
@@ -8,6 +10,7 @@ let identification = [
 
 let validation = ["type", "value", "valueDateTime"];
 
+// Data
 export default {
   protocols: [
     {
@@ -538,11 +541,15 @@ export default {
         id: 2,
         name: "insertValidation",
         mandatory: [
-          identification,
           "validationProviderId",
           "dateTime",
-          validation,
+          "presenceRequired",
+          "externalValidationId",
           "expirationDateTime"
+        ],
+        complex: [
+          { name: "identification", fields: identification },
+          { name: "validation", fields: validation }
         ]
       },
       {
@@ -556,7 +563,7 @@ export default {
         mandatory: [identification]
       },
       {
-        id: 4,
+        id: 5,
         name: "updateValidation",
         mandatory: [
           identification,

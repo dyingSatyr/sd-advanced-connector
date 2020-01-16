@@ -54,7 +54,7 @@ export default {
         .post("http://localhost:8081/", req)
         .then(function(response) {
           // eslint-disable-next-line
-          console.log(response);
+          // console.log(response);
           self.messageSent = response.data;
         })
         .catch(function(error) {
@@ -89,7 +89,7 @@ export default {
         .get("http://localhost:8081/notification")
         .then(function(response) {
           // eslint-disable-next-line
-          console.log(response);
+          // console.log(response);
           self.lastNotification = response.data;
         })
         .catch(function(error) {
@@ -103,7 +103,7 @@ export default {
         .get("http://localhost:8081/announcement")
         .then(function(response) {
           // eslint-disable-next-line
-          console.log(response);
+          // console.log(response);
           self.lastAnnouncement = response.data;
         })
         .catch(function(error) {

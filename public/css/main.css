@@ -118,3 +118,12 @@ pre.language-javascript {
   height: 400px;
   border-radius: 4px;
 }
+
+#complex-fields h2 {
+  border-right: 1px solid #d1d1d1;
+  border-left: 1px solid #d1d1d1;
+  border-top: 1px solid #d1d1d1;
+  padding: 15px 20px;
+  background: #dddfe0;
+  font-weight: bold;
+}

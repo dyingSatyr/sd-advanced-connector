@@ -4,12 +4,17 @@
 
     <!-- Protocol Select Box -->
     <label for="protocol">Protocol:</label>
-    <select v-model="selectedProtocol" name="protocol" @change="resetCommand(selectedProtocol)">
+    <select
+      v-model="selectedProtocol"
+      name="protocol"
+      @change="resetCommand(selectedProtocol)"
+    >
       <option
         v-bind:key="protocol.id"
         v-for="protocol in protocols"
         :value="protocol.id"
-      >{{protocol.name}}</option>
+        >{{ protocol.name }}</option
+      >
     </select>
 
     <!-- Command Select Box -->
@@ -17,22 +22,26 @@
     <select
       v-model="selectedCommand"
       name="command"
-      @change="resetRequestData(selectedProtocol,selectedCommand)"
+      @change="resetRequestData(selectedProtocol, selectedCommand)"
     >
       <option
         v-bind:key="command.id"
         v-for="command in commands[selectedProtocol - 1]"
         :value="command.id"
-      >{{command.name}}</option>
+        >{{ command.name }}</option
+      >
     </select>
 
     <!-- Display Mandatory Fields If They Exist -->
     <div id="mandatory-fields" v-if="mandatoryExists">
       <h1>Mandatory parameters:</h1>
-      <div v-for="mandatoryField in mandatoryExists" v-bind:key="mandatoryField.id">
+      <div
+        v-for="mandatoryField in mandatoryExists"
+        v-bind:key="mandatoryField.id"
+      >
         <ul v-if="Array.isArray(mandatoryField)">
           <li v-for="field in mandatoryField" :key="field.id">
-            <label :for="field">{{field}}</label>
+            <label :for="field">{{ field }}</label>
             <input
               type="text"
               ref="mandatoryInput"
@@ -43,7 +52,7 @@
           </li>
         </ul>
         <div v-else>
-          <label :for="mandatoryField">{{mandatoryField}}:</label>
+          <label :for="mandatoryField">{{ mandatoryField }}:</label>
           <input
             type="text"
             ref="mandatoryInput"
@@ -58,9 +67,42 @@
     <!-- Display Optional Fields If They Exist -->
     <div id="optional-fields" v-if="optionalExists">
       <h1>Optional parameters:</h1>
-      <div v-for="optionalField in optionalExists" v-bind:key="optionalField.id">
-        <label :for="optionalField">{{optionalField}}:</label>
-        <input type="text" ref="optionalInput" :placeholder="optionalField" :name="optionalField" />
+      <div
+        v-for="optionalField in optionalExists"
+        v-bind:key="optionalField.id"
+      >
+        <label :for="optionalField">{{ optionalField }}:</label>
+        <input
+          type="text"
+          ref="optionalInput"
+          :placeholder="optionalField"
+          :name="optionalField"
+        />
+      </div>
+    </div>
+    <!-- Display Complex Fields If They Exist -->
+    <div id="complex-fields" v-if="complexExists">
+      <h1>Complex Types</h1>
+      <div v-for="complexType in complexExists" :key="complexType.name">
+        <h2>{{ complexType.name }}</h2>
+        <ul>
+          <li v-for="field in complexType.fields" :key="field">
+            <label :for="field">{{ field }}</label>
+            <input
+              type="text"
+              ref="mandatoryInput"
+              :placeholder="field"
+              :name="field"
+              @blur="
+                addParamToRequestData(
+                  field,
+                  $event.target.value,
+                  complexType.name
+                )
+              "
+            />
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -105,8 +147,21 @@ export default {
       //console.log(this.requestData)
     },
     // Add parameter to request data obj on blur event of input field
-    addParamToRequestData(name, value) {
-      this.requestData.params[name] = value;
+    addParamToRequestData(name, value, cType) {
+      // eslint-disable-next-line
+      console.log("ctype is: " + cType);
+      //Check if complex type, then add it
+      if (cType) {
+        // check if obj for complex type already exist, if not create empty obj
+        if (!this.requestData.params[cType]) {
+          this.requestData.params[cType] = {};
+        }
+        this.requestData.params[cType][name] = value;
+        // eslint-disable-next-line
+        console.log("UPADOH!!!!!!!");
+      } else {
+        this.requestData.params[name] = value;
+      }
       // eslint-disable-next-line
       //console.log(this.requestData)
     },
@@ -159,6 +214,18 @@ export default {
         return optionalFields;
       }
       return false;
+    },
+    complexExists: function() {
+      if (
+        this.commands[this.selectedProtocol - 1][this.selectedCommand - 1]
+          .complex !== undefined
+      ) {
+        let complexFields = this.commands[this.selectedProtocol - 1][
+          this.selectedCommand - 1
+        ].complex;
+        return complexFields;
+      }
+      return false;
     }
   }, //End Computed
   created() {
@@ -168,7 +235,6 @@ export default {
 }; //End Export Default
 </script>
 
-
 <style scoped>
 ul {
   border: 1px solid #d1d1d1;
@@ -177,5 +243,3 @@ ul {
   margin-bottom: 20px;
 }
 </style>
-
-
