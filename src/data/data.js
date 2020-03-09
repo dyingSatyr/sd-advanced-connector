@@ -1,14 +1,30 @@
 // Complex types
 
-let identification = [
-  "TicketType",
-  "CardKey",
-  "CardCompany",
-  "CreditCardExpiryDate",
-  "MediaType"
+let genericIdentification = [
+  "p3:TicketType", //  0 = SKIDATA™ ticket | 1 = Credit card | 2 = Unknown | 3 = Electronic purse | 4 = External card system
+  "p3:CardKey",
+  "p3:CardCompany",
+  "p3:CreditCardExpiryDate",
+  "p3:MediaType" //0 = Barcode | 1 = Magnetic ticket | 2 = Keycard | 3 = Smartcard | 4 = Optical | 5 = Tag | 6 = License plate | 7 = External reader | 8 = Standard
 ];
 
-let validation = ["type", "value", "valueDateTime"];
+// let barcodeIdentification = [
+//   "p3:BarcodeType", //0 = Interleaved 2Of5 | 1 = EAN | 2 = Code 39 | 3 = Code 128 | 4 = DataMatrix 2D | 5 = QR | 6 = PDF 417 | 7 = Aztec
+//   "p3:Barcode"
+// ];
+
+// let licensePlateIdentification = [
+//   "PlateNo",
+//   "Country",
+//   "Province",
+//   "Type" //number depends on the LPR-system
+// ];
+
+let validation = [
+  "type", //0..TimeValue, 1..CashValue, 2..Percentage, 3..FlatRatePayment, 4..Rate, 5..CashValueExtraCharge, 6..PercentageExtraCharge , 7..PaidUntil, 8..BonusTime
+  "value", //Contains the value for all types except paid until. Range time value: 1 – 999 (time in minutes). Range cash value: 1 – 99999.99 (amount). Range percentage: 1 – 100 (no decimals). Range rate: 1-99 (must be a valid rate number).
+  "valueDateTime" //Contains the value for type paid until. 1900-01-01T01:01:01+01:00
+];
 
 // Data
 export default {
@@ -535,7 +551,7 @@ export default {
       {
         id: 1,
         name: "deleteValidation",
-        mandatory: [identification, "validationProviderId", "dateTime"]
+        mandatory: [genericIdentification, "validationProviderId", "dateTime"]
       },
       {
         id: 2,
@@ -548,7 +564,7 @@ export default {
           "expirationDateTime"
         ],
         complex: [
-          { name: "identification", fields: identification },
+          { name: "identification", fields: genericIdentification },
           { name: "validation", fields: validation }
         ]
       },
@@ -560,13 +576,13 @@ export default {
       {
         id: 4,
         name: "requestValidationsOfTicket",
-        mandatory: [identification]
+        mandatory: [genericIdentification]
       },
       {
         id: 5,
         name: "updateValidation",
         mandatory: [
-          identification,
+          genericIdentification,
           "validationProviderId",
           "dateTime",
           "presenceRequired",

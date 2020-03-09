@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<insertValidation xmlns="http://www.skidata.com/parking/validations/v1/command">
+  <identification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="p3:BarcodeIdentification" xmlns:p3="http://www.skidata.com/parking/messaging/common/v1/parkingdatatypes">
+    <p3:BarcodeType>0</p3:BarcodeType>
+    <p3:Barcode>507989552000134700000052</p3:Barcode>
+    <p3:extension>
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+    </p3:extension>
+  </identification>
+  <validationProviderId>1</validationProviderId>
+  <dateTime>2021-01-01T01:01:01+01:00</dateTime>
+  <presenceRequired>true</presenceRequired>
+  <externalValidationId>externalValidationId1</externalValidationId>
+  <validation>
+    <type xmlns="http://www.skidata.com/parking/messaging/common/v1/parkingdatatypes">1</type>
+    <value xmlns="http://www.skidata.com/parking/messaging/common/v1/parkingdatatypes">1</value>
+    <valueDateTime xmlns="http://www.skidata.com/parking/messaging/common/v1/parkingdatatypes">2021-01-01T01:01:01+01:00</valueDateTime>
+    <extension xmlns="http://www.skidata.com/parking/messaging/common/v1/parkingdatatypes">
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+    </extension>
+  </validation>
+  <expirationDateTime>2021-01-01T01:01:01+01:00</expirationDateTime>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</insertValidation>

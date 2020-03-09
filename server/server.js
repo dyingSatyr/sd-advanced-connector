@@ -62,9 +62,6 @@ app.post("/env", function(req, res) {
 app.post("/", function(req, res) {
   //Get data from form
   const requestParams = req.body.params;
-  console.log("rikvestparams =");
-  console.dir(requestParams);
-
   const protocol = req.body.protocolName;
   const request = req.body.commandName;
 
@@ -84,15 +81,16 @@ app.post("/", function(req, res) {
         console.log(err);
       }
       //Result is Object from XML
+      console.log("Request Obj:");
       console.dir(reqObject);
 
-      // TODO: add complex type
       //Change object properties
       for (const [key, value] of Object.entries(requestParams)) {
         //if value is object, means we have a complex type
         if (value instanceof Object && !(value instanceof Array)) {
           for (const [k, v] of Object.entries(value)) {
-            reqObject[request][key][0][k] = v;
+            //reqObject[request][key][0][k] = v; old incorrect
+            reqObject[request][key][0][k][0]._ = v;
           }
         } else {
           //Just plop in the value in key, no complex type
@@ -103,7 +101,7 @@ app.post("/", function(req, res) {
       //Build XML again
       var builder = new parser.Builder();
       msg = builder.buildObject(reqObject);
-      //console.log(`New message = ${msg}`);
+      console.log(`New message = ${msg}`);
     });
   });
 
