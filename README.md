@@ -21,6 +21,7 @@ npm run app
 5. events
 6. validations
 7. cash levels
+8. transaction history
 
 ### Commands:
 
@@ -72,6 +73,10 @@ npm run app
 ### Cash Levels
 
 - requestCashLevels
+
+### Transaction History
+
+- requestTransactionHistory
 
 ## Author
 

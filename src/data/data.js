@@ -41,7 +41,10 @@ export default {
       id: 3,
       name: "counting"
     },
-    { id: 4, name: "countingmanagement" },
+    {
+      id: 4,
+      name: "countingmanagement"
+    },
     {
       id: 5,
       name: "events"
@@ -57,6 +60,10 @@ export default {
     {
       id: 8,
       name: "validations"
+    },
+    {
+      id: 9,
+      name: "transactionhistory"
     }
   ],
   commands: [
@@ -590,6 +597,13 @@ export default {
           validation,
           "expirationDateTime"
         ]
+      }
+    ],
+    [
+      {
+        id: 1,
+        name: "requestTransactionHistory",
+        mandatory: ["deviceId", "timeRange"]
       }
     ]
   ]
