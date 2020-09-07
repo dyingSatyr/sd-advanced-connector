@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<requestParkingTransaction xmlns="http://www.skidata.com/parking/transactionmanagement/v1/command">
+  <identification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="p3:GenericParkingIdentification" xmlns:p3="http://www.skidata.com/parking/messaging/common/v1/parkingdatatypes">
+    <p3:TicketType>1</p3:TicketType>
+    <p3:CardKey>CardKey1</p3:CardKey>
+    <p3:CardCompany>CardCompany1</p3:CardCompany>
+    <p3:CreditCardExpiryDate>1900-01-01T01:01:01+01:00</p3:CreditCardExpiryDate>
+    <p3:MediaType>1</p3:MediaType>
+    <p3:extension>
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+      <any_element xmlns="">anyType</any_element>
+    </p3:extension>
+  </identification>
+  <includeRate>true</includeRate>
+  <extension>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+    <any_element xmlns="">anyType</any_element>
+  </extension>
+</requestParkingTransaction>

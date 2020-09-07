@@ -89,8 +89,11 @@ app.post("/", function(req, res) {
         //if value is object, means we have a complex type
         if (value instanceof Object && !(value instanceof Array)) {
           for (const [k, v] of Object.entries(value)) {
+            console.log(`k is ${k}, v is ${v}`);
             //reqObject[request][key][0][k] = v; old incorrect
+            console.log("before:" + reqObject[request][key][0][k][0]._);
             reqObject[request][key][0][k][0]._ = v;
+            console.log("after:" + reqObject[request][key][0][k][0]._);
           }
         } else {
           //Just plop in the value in key, no complex type
@@ -101,7 +104,7 @@ app.post("/", function(req, res) {
       //Build XML again
       var builder = new parser.Builder();
       msg = builder.buildObject(reqObject);
-      console.log(`New message = ${msg}`);
+      // console.log(`New message = ${msg}`);
     });
   });
 
@@ -122,7 +125,7 @@ app.post("/", function(req, res) {
               Buffer.from(msg),
               getCurrentConnParams(client, protocol)
             );
-            console.log("Message sent:\n '%s'", msg);
+            // console.log("Message sent:\n '%s'", msg);
             return ch.close();
           });
         })
@@ -177,7 +180,7 @@ function listenRMQQueue(rmqip, queue, client, opts) {
                 fs.writeFile(
                   baseURL + "logs/" + queue + "." + client + ".log",
                   now + " \r\n" + msg.content.toString(),
-                  err => {
+                  (err) => {
                     if (err) {
                       console.log("Error:", err);
                     }
@@ -187,7 +190,7 @@ function listenRMQQueue(rmqip, queue, client, opts) {
                 fs.appendFile(
                   baseURL + "logs/" + queue + "." + client + ".log",
                   "\r\n ###Next### " + now + " \r\n" + msg.content.toString(),
-                  err => {
+                  (err) => {
                     if (err) {
                       console.log("error", err);
                     }
@@ -220,7 +223,7 @@ function getCurrentConnOpts(client) {
     pfx: fs.readFileSync(baseURL + "certificates/" + client + ".pfx"), // using pfx
     passphrase: "", // passphrase for key
     ca: [fs.readFileSync(baseURL + "certificates/" + client + ".crt")], // array of trusted CA certs
-    credentials: amqp.credentials.external() // set auth mode
+    credentials: amqp.credentials.external(), // set auth mode
   };
   return opts;
 }
@@ -229,7 +232,7 @@ function getCurrentConnOpts(client) {
 function getCurrentConnParams(client, protocol) {
   const params = {
     replyTo: "service." + client + ".reply." + protocol,
-    correlationId: "randomString"
+    correlationId: "randomString",
   };
   return params;
 }
