@@ -9,6 +9,7 @@ const fs = require("fs");
 
 const amqp = require("amqplib");
 const parser = require("xml2js");
+const { bgYellow } = require("chalk");
 const baseURL = "./server/";
 
 let lastNotification = "";
@@ -45,7 +46,7 @@ app.get("/announcement", (req, res) => res.send(lastAnnouncement));
 // Environment POST route
 // **********************
 
-app.post("/env", function(req, res) {
+app.post("/env", (req, res) => {
   rmqip = req.body.rmqip;
   client = "APT" + req.body.fno + "." + req.body.acc;
   console.log(
@@ -64,7 +65,7 @@ app.post("/env", function(req, res) {
 // Command POST Route
 // **********************
 
-app.post("/", function(req, res) {
+app.post("/", (req, res) => {
   //Get data from form
   const requestParams = req.body.params;
   const protocol = req.body.protocolName;
@@ -77,9 +78,9 @@ app.post("/", function(req, res) {
 
   //Get text from XML
   fs.readFile(pathToRequest, "utf-8", (err, data) => {
-    if (err) {
-      console.log(err);
-    }
+    err
+      ? console.log(chalk.bgRed(err))
+      : console.log(chalk.cyan(`${request} file read successfully.`));
 
     parser.parseString(data, (err, reqObject) => {
       if (err) {
@@ -113,30 +114,32 @@ app.post("/", function(req, res) {
     });
   });
 
-  //Handle AMQP Request
+  //Send AMQP Request to RMQ Server
   amqp
     .connect("amqps://" + rmqip + ":5671", getCurrentConnOpts(client))
-    .then(function(conn) {
+    .then((conn) => {
+      console.log(chalk.green("Connection to RMQ established."));
       return conn
         .createChannel()
-        .then(function(ch) {
-          console.log("Connection to RMQ Established.");
-          let q = client;
-          let ok = ch.checkQueue(q);
-          return ok.then(function(_qok) {
-            ch.publish(
-              "amq.topic",
-              "client." + client + ".command." + protocol,
-              Buffer.from(msg),
-              getCurrentConnParams(client, protocol)
-            );
-            // console.log("Message sent:\n '%s'", msg);
-            return ch.close();
-          });
+        .then(async (ch) => {
+          console.log(chalk.green("Channel created."));
+          await ch.checkQueue(client);
+          ch.publish(
+            "amq.topic",
+            "client." + client + ".command." + protocol,
+            Buffer.from(msg),
+            getCurrentConnParams(client, protocol)
+          );
+          console.log(
+            chalk.cyan("# Sending request #\n") +
+              chalk.yellow(`${Buffer.from(msg)}`) +
+              chalk.green("\nChannel closed.")
+          );
+          return ch.close();
         })
         .finally(() => {
           conn.close();
-          console.log("Connection to RMQ closed.");
+          console.log(chalk.red("Connection to RMQ closed."));
         });
     })
     .catch(console.warn);
@@ -158,76 +161,69 @@ app.listen(port, () =>
 // Queue listener func
 // **********************
 
-function listenRMQQueue(rmqip, queue, client, opts) {
+const listenRMQQueue = (rmqip, queue, client, opts) => {
   amqp
     .connect("amqps://" + rmqip + ":5671", opts)
-    .then(function(conn2) {
-      process.once("SIGINT", function() {
+    .then(async (conn2) => {
+      process.once("SIGINT", () => {
         conn2.close();
+        console.log(chalk.bgRed("CONNECTION CLOSED FORCIBLY."));
       });
-      return conn2.createChannel().then(function(ch) {
-        var ok = ch.checkQueue(queue + "." + client);
-        ok = ok.then(function(_qok) {
-          return ch.consume(
-            queue + "." + client,
-            function(msg) {
-              console.log(
-                "###### Message Received ######\n %s",
-                msg.content.toString()
+      const ch = await conn2.createChannel();
+      var ok = ch.checkQueue(queue + "." + client);
+      ok.then((_qok) => {
+        return ch.consume(
+          queue + "." + client,
+          (msg) => {
+            console.log(
+              chalk.cyan(`# Message Received - Queue: ${queue} #\n`) +
+                chalk.yellow(msg.content.toString())
+            );
+            //Save messages to log folder
+            let now = new Date();
+            if (
+              !fs.existsSync(baseURL + "logs/" + queue + "." + client + ".log")
+            ) {
+              fs.writeFile(
+                baseURL + "logs/" + queue + "." + client + ".log",
+                now + " \r\n" + msg.content.toString(),
+                (err) => {
+                  if (err) {
+                    console.log("Error:", err);
+                  }
+                }
               );
-              console.log("###### Waiting for further messages... ######");
-
-              //Save messages to log folder
-              let now = new Date();
-              if (
-                !fs.existsSync(
-                  baseURL + "logs/" + queue + "." + client + ".log"
-                )
-              ) {
-                fs.writeFile(
-                  baseURL + "logs/" + queue + "." + client + ".log",
-                  now + " \r\n" + msg.content.toString(),
-                  (err) => {
-                    if (err) {
-                      console.log("Error:", err);
-                    }
+            } else {
+              fs.appendFile(
+                baseURL + "logs/" + queue + "." + client + ".log",
+                "\r\n ###Next### " + now + " \r\n" + msg.content.toString(),
+                (err_1) => {
+                  if (err_1) {
+                    console.log("error", err_1);
                   }
-                );
-              } else {
-                fs.appendFile(
-                  baseURL + "logs/" + queue + "." + client + ".log",
-                  "\r\n ###Next### " + now + " \r\n" + msg.content.toString(),
-                  (err) => {
-                    if (err) {
-                      console.log("error", err);
-                    }
-                  }
-                );
-              }
+                }
+              );
+            }
 
-              //Set last notification/announcment
-              setLastMessageRecieved(queue, msg.content.toString());
-            },
-            { noAck: true }
-          );
-        });
-
-        return ok.then(function(_consumeOk) {
-          console.log(
-            chalk.green(
-              "###### Listening " + queue + "." + client + " queue.  ######"
-            )
-          );
-        });
+            //Set last notification/announcment
+            setLastMessageRecieved(queue, msg.content.toString());
+          },
+          { noAck: true }
+        );
       });
+      console.log(
+        chalk.green(
+          "###### Listening " + queue + "." + client + " queue.  ######"
+        )
+      );
     })
     .catch(console.warn);
-}
+};
 
 // **********************
 // Getter Connection Opts
 // **********************
-function getCurrentConnOpts(client) {
+const getCurrentConnOpts = (client) => {
   const opts = {
     pfx: fs.readFileSync(baseURL + "certificates/" + client + ".pfx"), // using pfx
     passphrase: "", // passphrase for key
@@ -235,26 +231,25 @@ function getCurrentConnOpts(client) {
     credentials: amqp.credentials.external(), // set auth mode
   };
   return opts;
-}
+};
 
 //Get Current AMQP Request params
-function getCurrentConnParams(client, protocol) {
+const getCurrentConnParams = (client, protocol) => {
   const params = {
     replyTo: "service." + client + ".reply." + protocol,
     correlationId: "randomString",
   };
   return params;
-}
+};
 
 // **********************
 // Set Last Message Rec
 // **********************
 
-function setLastMessageRecieved(q, msg) {
-  console.log(`Message recieved: ${msg} from ${q} queue.`);
+const setLastMessageRecieved = (q, msg) => {
   if (q == "notification") {
     lastNotification = msg;
   } else if (q == "announcement") {
     lastAnnouncement = msg;
   }
-}
+};
