@@ -78,6 +78,14 @@ npm run app
 
 - requestTransactionHistory
 
+### Transaction Management
+
+- requestParkingTransaction
+- updateParkingTransaction
+- manualEntry
+- manualExit
+- manualTransfer
+
 ## Author
 
 Boris Grabovac
