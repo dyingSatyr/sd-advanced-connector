@@ -22,6 +22,7 @@ npm run app
 6. validations
 7. cash levels
 8. transaction history
+9. transaction management
 
 ### Commands:
 
