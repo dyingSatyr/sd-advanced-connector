@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const port = 8081;
+const chalk = require("chalk");
 
 const fs = require("fs");
 
@@ -48,7 +49,11 @@ app.post("/env", function(req, res) {
   rmqip = req.body.rmqip;
   client = "APT" + req.body.fno + "." + req.body.acc;
   console.log(
-    `Environment information updated: \nRMQ IP: ${req.body.rmqip}\nClient: APT${req.body.fno}.${req.body.acc}`
+    chalk.bgGreen(`Environment information updated: \n`) +
+      chalk.cyan("RMQ IP: ") +
+      `${req.body.rmqip}\n` +
+      chalk.cyan(`Client: `) +
+      `APT${req.body.fno}.${req.body.acc}`
   );
   listenRMQQueue(rmqip, "notification", client, getCurrentConnOpts(client));
   listenRMQQueue(rmqip, "announcement", client, getCurrentConnOpts(client));
@@ -81,8 +86,8 @@ app.post("/", function(req, res) {
         console.log(err);
       }
       //Result is Object from XML
-      console.log("Request Obj:");
-      console.dir(reqObject);
+      // console.log("Request Obj:");
+      // console.dir(reqObject);
 
       //Change object properties
       for (const [key, value] of Object.entries(requestParams)) {
@@ -144,7 +149,9 @@ app.post("/", function(req, res) {
 // Run Server
 // **********************
 app.listen(port, () =>
-  console.log(`AMQP Backend Service is now running on port: ${port}.`)
+  console.log(
+    chalk.bgGreen(`AMQP Backend Service is now running on port: ${port}.`)
+  )
 );
 
 // **********************
@@ -207,7 +214,9 @@ function listenRMQQueue(rmqip, queue, client, opts) {
 
         return ok.then(function(_consumeOk) {
           console.log(
-            "###### Listening " + queue + "." + client + " queue.  ######"
+            chalk.green(
+              "###### Listening " + queue + "." + client + " queue.  ######"
+            )
           );
         });
       });

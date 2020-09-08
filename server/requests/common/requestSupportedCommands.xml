@@ -9,6 +9,8 @@
   <protocols>http://www.skidata.com/parking/commands/v1.0</protocols>
   <protocols>http://www.skidata.com/parking/cashlevels/v1.0</protocols>
   <protocols>http://www.skidata.com/parking/validations/v1.0</protocols>
+  <protocols>http://www.skidata.com/parking/transactionhistory/v1.0</protocols>
+  <protocols>http://www.skidata.com/parking/transactionmanagement/v1.0</protocols>
   <extension>
     <any_element xmlns="">anyType</any_element>
     <any_element xmlns="">anyType</any_element>

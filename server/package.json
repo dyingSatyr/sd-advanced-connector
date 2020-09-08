@@ -12,11 +12,12 @@
   "dependencies": {
     "amqplib": "^0.5.5",
     "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "xml2js": "^0.4.22"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "nodemon": "^2.0.4"
   }
 }
