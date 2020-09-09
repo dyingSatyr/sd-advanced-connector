@@ -29,3 +29,6 @@ yarn-error.log*
 # Hide logs
 announcement.*.log
 notification.*.log
+
+# Hide env
+*.env

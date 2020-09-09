@@ -4,17 +4,12 @@
 
     <!-- Protocol Select Box -->
     <label for="protocol">Protocol:</label>
-    <select
-      v-model="selectedProtocol"
-      name="protocol"
-      @change="resetCommand(selectedProtocol)"
-    >
+    <select v-model="selectedProtocol" name="protocol" @change="resetCommand(selectedProtocol)">
       <option
         v-bind:key="protocol.id"
         v-for="protocol in protocols"
         :value="protocol.id"
-        >{{ protocol.name }}</option
-      >
+      >{{ protocol.name }}</option>
     </select>
 
     <!-- Command Select Box -->
@@ -28,17 +23,13 @@
         v-bind:key="command.id"
         v-for="command in commands[selectedProtocol - 1]"
         :value="command.id"
-        >{{ command.name }}</option
-      >
+      >{{ command.name }}</option>
     </select>
 
     <!-- Display Mandatory Fields If They Exist -->
     <div id="mandatory-fields" v-if="mandatoryExists">
       <h1>Mandatory parameters:</h1>
-      <div
-        v-for="mandatoryField in mandatoryExists"
-        v-bind:key="mandatoryField.id"
-      >
+      <div v-for="mandatoryField in mandatoryExists" v-bind:key="mandatoryField.id">
         <ul v-if="Array.isArray(mandatoryField)">
           <li v-for="field in mandatoryField" :key="field.id">
             <label :for="field">{{ field }}</label>
@@ -67,17 +58,9 @@
     <!-- Display Optional Fields If They Exist -->
     <div id="optional-fields" v-if="optionalExists">
       <h1>Optional parameters:</h1>
-      <div
-        v-for="optionalField in optionalExists"
-        v-bind:key="optionalField.id"
-      >
+      <div v-for="optionalField in optionalExists" v-bind:key="optionalField.id">
         <label :for="optionalField">{{ optionalField }}:</label>
-        <input
-          type="text"
-          ref="optionalInput"
-          :placeholder="optionalField"
-          :name="optionalField"
-        />
+        <input type="text" ref="optionalInput" :placeholder="optionalField" :name="optionalField" />
       </div>
     </div>
     <!-- Display Complex Fields If They Exist -->
@@ -122,8 +105,8 @@ export default {
       requestData: {
         protocol: this.selectedProtocol,
         command: this.selectedCommand,
-        params: {}
-      }
+        params: {},
+      },
     };
   }, //End Data
   methods: {
@@ -141,7 +124,7 @@ export default {
       this.requestData = {
         protocol: protocol,
         command: command,
-        params: {}
+        params: {},
       };
       // eslint-disable-next-line
       //console.log(this.requestData)
@@ -186,11 +169,11 @@ export default {
           optionalInputs[i].value = "";
         }
       }
-    }
+    },
   }, //End Methods
   computed: {
     // Check if mandatory fields for command exist, return those fields
-    mandatoryExists: function() {
+    mandatoryExists: function () {
       if (
         this.commands[this.selectedProtocol - 1][this.selectedCommand - 1]
           .mandatory !== undefined
@@ -203,7 +186,7 @@ export default {
       return false;
     },
     // Check if optional parameter for command exist, return those fields
-    optionalExists: function() {
+    optionalExists: function () {
       if (
         this.commands[this.selectedProtocol - 1][this.selectedCommand - 1]
           .optional !== undefined
@@ -215,7 +198,7 @@ export default {
       }
       return false;
     },
-    complexExists: function() {
+    complexExists: function () {
       if (
         this.commands[this.selectedProtocol - 1][this.selectedCommand - 1]
           .complex !== undefined
@@ -226,12 +209,12 @@ export default {
         return complexFields;
       }
       return false;
-    }
+    },
   }, //End Computed
   created() {
     //Set request data to default value onload
     this.resetRequestData(1, 1);
-  } //End
+  }, //End
 }; //End Export Default
 </script>
 

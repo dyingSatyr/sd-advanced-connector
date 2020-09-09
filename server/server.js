@@ -4,12 +4,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const port = 8081;
 const chalk = require("chalk");
-
+require("dotenv").config();
 const fs = require("fs");
+
+// require("https").globalAgent.options.ca = require("ssl-root-cas/latest").create();
 
 const amqp = require("amqplib");
 const parser = require("xml2js");
-const { bgYellow } = require("chalk");
 const baseURL = "./server/";
 
 let lastNotification = "";
@@ -26,6 +27,10 @@ app.use(bodyParser.json());
 let rmqip = "10.29.10.141";
 let client = "APT0001362.ACC1";
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+// const sslRootCAs = require("ssl-root-cas/latest")
+//   .create()
+//   .addFile(baseURL + "certificates/" + client + ".crt");
 
 // **********************
 // Index get route
@@ -74,13 +79,13 @@ app.post("/", (req, res) => {
   //Determine the path to correct xml file
   const pathToRequest =
     baseURL + "requests/" + protocol + "/" + request + ".xml";
-  var msg = "";
+  let msg = "";
 
   //Get text from XML
   fs.readFile(pathToRequest, "utf-8", (err, data) => {
     err
       ? console.log(chalk.bgRed(err))
-      : console.log(chalk.cyan(`${request} file read successfully.`));
+      : console.log(chalk.cyan(`${request}.xml file read successfully.`));
 
     parser.parseString(data, (err, reqObject) => {
       if (err) {
@@ -94,6 +99,8 @@ app.post("/", (req, res) => {
       for (const [key, value] of Object.entries(requestParams)) {
         //if value is object, means we have a complex type
         if (value instanceof Object && !(value instanceof Array)) {
+          console.log(chalk.grey(`${key} is complex type.`));
+          console.dir(value);
           for (const [k, v] of Object.entries(value)) {
             console.log(`k is ${k}, v is ${v}`);
             //reqObject[request][key][0][k] = v; old incorrect
@@ -103,12 +110,17 @@ app.post("/", (req, res) => {
           }
         } else {
           //Just plop in the value in key, no complex type
+          console.log(
+            chalk.grey(
+              `${key} is primitive. Updating from "${reqObject[request][key]}" to "${value}".`
+            )
+          );
           reqObject[request][key] = value;
         }
       }
 
       //Build XML again
-      var builder = new parser.Builder();
+      let builder = new parser.Builder();
       msg = builder.buildObject(reqObject);
       // console.log(`New message = ${msg}`);
     });
@@ -170,7 +182,7 @@ const listenRMQQueue = (rmqip, queue, client, opts) => {
         console.log(chalk.bgRed("CONNECTION CLOSED FORCIBLY."));
       });
       const ch = await conn2.createChannel();
-      var ok = ch.checkQueue(queue + "." + client);
+      let ok = ch.checkQueue(queue + "." + client);
       ok.then((_qok) => {
         return ch.consume(
           queue + "." + client,
