@@ -6,11 +6,6 @@
     <p3:CardCompany>CardCompany1</p3:CardCompany>
     <p3:CreditCardExpiryDate>1900-01-01T01:01:01+01:00</p3:CreditCardExpiryDate>
     <p3:MediaType>1</p3:MediaType>
-    <p3:extension>
-      <any_element xmlns="">anyType</any_element>
-      <any_element xmlns="">anyType</any_element>
-      <any_element xmlns="">anyType</any_element>
-    </p3:extension>
   </identification>
   <externalCardSystemArticleCode>externalCardSystemArticleCode1</externalCardSystemArticleCode>
   <transferDateTime>1900-01-01T01:01:01+01:00</transferDateTime>
@@ -18,9 +13,4 @@
   <transferDeviceId>1</transferDeviceId>
   <suppressCounting>true</suppressCounting>
   <explanation>explanation1</explanation>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </manualTransfer>

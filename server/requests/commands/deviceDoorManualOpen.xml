@@ -2,9 +2,4 @@
 <deviceDoorManualOpen xmlns="http://www.skidata.com/parking/commands/v1/command">
   <deviceId>73</deviceId>
   <justification>justification1</justification>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </deviceDoorManualOpen>

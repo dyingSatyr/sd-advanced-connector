@@ -3,9 +3,4 @@
   <deviceId>83</deviceId>
   <justification>deviceActivateVariableSubstituteTicket</justification>
   <dateTime>2019-04-17T01:01:01+01:00</dateTime>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </deviceActivateVariableSubstituteTicket>

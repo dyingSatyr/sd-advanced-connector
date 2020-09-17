@@ -5,9 +5,4 @@
   <level>1</level>
   <trafficSignalMode>1</trafficSignalMode>
   <externalCounting>true</externalCounting>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </setCountingCategory>

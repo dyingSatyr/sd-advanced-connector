@@ -6,9 +6,4 @@
   <surcharge>1</surcharge>
   <paymentMode>1</paymentMode>
   <label>label1</label>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </updateParkingTransaction>

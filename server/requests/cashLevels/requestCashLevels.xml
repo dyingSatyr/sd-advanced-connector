@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <requestCashLevels xmlns="http://www.skidata.com/parking/cashlevels/v1/command">
   <deviceId>1</deviceId>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </requestCashLevels>

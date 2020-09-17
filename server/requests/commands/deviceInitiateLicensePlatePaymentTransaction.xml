@@ -7,15 +7,5 @@
     <Country xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">To1</Country>
     <Province xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">Province1</Province>
     <Type xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">1</Type>
-    <extension xmlns="http://www.skidata.com/common/messaging/v1/parkingdatatypes">
-      <any_element xmlns="">anyType</any_element>
-      <any_element xmlns="">anyType</any_element>
-      <any_element xmlns="">anyType</any_element>
-    </extension>
   </identification>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </deviceInitiateLicensePlatePaymentTransaction>

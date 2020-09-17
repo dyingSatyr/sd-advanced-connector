@@ -6,11 +6,6 @@
     <p3:CardCompany>CardCompany1</p3:CardCompany>
     <p3:CreditCardExpiryDate>1900-01-01T01:01:01+01:00</p3:CreditCardExpiryDate>
     <p3:MediaType>1</p3:MediaType>
-    <p3:extension>
-      <any_element xmlns="">anyType</any_element>
-      <any_element xmlns="">anyType</any_element>
-      <any_element xmlns="">anyType</any_element>
-    </p3:extension>
   </identification>
   <externalCardSystemArticleCode>externalCardSystemArticleCode1</externalCardSystemArticleCode>
   <exitDateTime>1900-01-01T01:01:01+01:00</exitDateTime>
@@ -18,9 +13,4 @@
   <suppressCounting>true</suppressCounting>
   <forceExit>true</forceExit>
   <explanation>explanation1</explanation>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </manualExit>

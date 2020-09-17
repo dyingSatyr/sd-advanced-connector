@@ -3,9 +3,4 @@
   <deviceId>83</deviceId>
   <justification>justification1</justification>
   <gracePeriod>10</gracePeriod>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </deviceActivateExtendedExitGracePeriod>

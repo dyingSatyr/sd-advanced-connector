@@ -2,9 +2,4 @@
 <requestTransactionHistory xmlns="http://www.skidata.com/parking/transactionhistory/v1/command">
   <deviceId>1</deviceId>
   <timeRange>1</timeRange>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </requestTransactionHistory>

@@ -8,9 +8,4 @@
   <cameraType>2</cameraType>
   <rotation>0</rotation>
   <caching>700</caching>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </deviceActivateOperatorVideo>

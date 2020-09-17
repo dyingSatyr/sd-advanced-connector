@@ -5,9 +5,4 @@
   <capacity>1</capacity>
   <occupancyLimit>1</occupancyLimit>
   <freeLimit>1</freeLimit>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </manageCountingArea>

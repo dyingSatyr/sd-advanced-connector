@@ -3,9 +3,4 @@
   <carParkId>1</carParkId>
   <justification>justification1</justification>
   <gracePeriod>1</gracePeriod>
-  <extension>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-    <any_element xmlns="">anyType</any_element>
-  </extension>
 </carParkActivateExtendedExitGracePeriod>
