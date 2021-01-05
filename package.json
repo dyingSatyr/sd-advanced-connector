@@ -9,7 +9,7 @@
     "app": "concurrently \"npm run serve\" \"nodemon server\\server\""
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^2.6.11",
     "vue": "^2.6.11",
     "vue-code-highlight": "^0.7.4"
